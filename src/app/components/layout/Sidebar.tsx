@@ -12,14 +12,7 @@ import {
 	Divider,
 	Toolbar,
 } from '@mui/material';
-import {
-	Restaurant,
-	Dashboard as DashboardIcon,
-	BarChart,
-	People,
-	Settings,
-	Home,
-} from '@mui/icons-material';
+import { Restaurant, Settings } from '@mui/icons-material';
 import { usePathname, useRouter } from 'next/navigation';
 
 const drawerWidth = 240;

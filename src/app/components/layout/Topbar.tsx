@@ -6,20 +6,12 @@ import {
 	IconButton,
 	Typography,
 	Box,
-	Badge,
 	Avatar,
 	Menu,
 	MenuItem,
 	Divider,
 } from '@mui/material';
-import {
-	Search as SearchIcon,
-	Notifications as NotificationsIcon,
-	Email as EmailIcon,
-	AccountCircle,
-	Settings,
-	Logout,
-} from '@mui/icons-material';
+import { AccountCircle, Settings, Logout } from '@mui/icons-material';
 import { useState } from 'react';
 
 const drawerWidth = 240;
