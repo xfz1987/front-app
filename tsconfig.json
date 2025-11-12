@@ -1,49 +1,49 @@
 {
-  "compilerOptions": {
-    /* Base Options: */
-    "esModuleInterop": true, // 解决 ES 模块（import/export）与 CommonJS 模块（require/module.exports）的互操作问题
-    "skipLibCheck": true, // 跳过对 .d.ts 类型声明文件的类型检查，加快编译速
-    "target": "ES2017", // 指定编译后生成的 JavaScript 版本
-    "allowJs": true, // 允许 TypeScript 编译 / 检查 JavaScript 文件（不仅限于 .ts/.tsx）。在混合 JS/TS 的项目中常用（例如逐步迁移 JS 到 TS）。
-    "resolveJsonModule": true, // 允许 import 导入 JSON 文件
-    "moduleDetection": "force", // 强制将所有文件视为模块（即使没有 import/export），避免因全局作用域冲突导致的问题
-    "isolatedModules": true, // 要求每个文件都是独立的模块（必须包含 import/export 或被 declare module 包裹）
-    "incremental": true, // 启用增量编译。TypeScript 会生成 .tsbuildinfo 文件缓存编译结果，后续编译只处理修改过的文件，大幅提升速度
+	"compilerOptions": {
+		/* Base Options: */
+		"esModuleInterop": true, // 解决 ES 模块（import/export）与 CommonJS 模块（require/module.exports）的互操作问题
+		"skipLibCheck": true, // 跳过对 .d.ts 类型声明文件的类型检查，加快编译速
+		"target": "ES2017", // 指定编译后生成的 JavaScript 版本
+		"allowJs": true, // 允许 TypeScript 编译 / 检查 JavaScript 文件（不仅限于 .ts/.tsx）。在混合 JS/TS 的项目中常用（例如逐步迁移 JS 到 TS）。
+		"resolveJsonModule": true, // 允许 import 导入 JSON 文件
+		"moduleDetection": "force", // 强制将所有文件视为模块（即使没有 import/export），避免因全局作用域冲突导致的问题
+		"isolatedModules": true, // 要求每个文件都是独立的模块（必须包含 import/export 或被 declare module 包裹）
+		"incremental": true, // 启用增量编译。TypeScript 会生成 .tsbuildinfo 文件缓存编译结果，后续编译只处理修改过的文件，大幅提升速度
 
-    /* Strictness */
-    "strict": true, // 开启所有严格类型检查选项
-    "noUncheckedIndexedAccess": true, // 若启用，访问数组 / 对象的索引时（如 arr[0]），TypeScript 会强制检查是否可能为 undefined（例如 arr 可能为空），进一步提升类型安全性
-    "checkJs": true, // 若启用，会对 .js 文件进行类型检查（结合 JSDoc 注释）。通常与 allowJs 配合使用，用于在 JS 项目中逐步引入类型检查
+		/* Strictness */
+		"strict": true, // 开启所有严格类型检查选项
+		"noUncheckedIndexedAccess": true, // 若启用，访问数组 / 对象的索引时（如 arr[0]），TypeScript 会强制检查是否可能为 undefined（例如 arr 可能为空），进一步提升类型安全性
+		"checkJs": true, // 若启用，会对 .js 文件进行类型检查（结合 JSDoc 注释）。通常与 allowJs 配合使用，用于在 JS 项目中逐步引入类型检查
 
-    /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "esnext"], // 指定 TypeScript 可以使用的内置库类型定义
-    "noEmit": true, // 禁止 TypeScript 生成编译后的 .js 文件
-    "module": "esnext", // 指定模块代码生成格式为 esnext（最新 ES 模块语法），支持动态 import() 等高级特性，配合打包工具使用
-    "moduleResolution": "bundler", // 使用打包工具（如 Webpack）的模块解析逻辑，而非 TypeScript 默认的 Node.js 解析逻辑
-    // "jsx": "preserve", // "preserve"：保留 JSX 语法不编译（交给 Babel 等工具处理）。
-    "jsx": "react-jsx", // React 17+ 推荐的方式
-    "plugins": [
-      {
-        "name": "next" // 启用 Next.js 提供的 TypeScript 插件，用于增强 Next.js 特定语法的类型检查
-      }
-    ],
+		/* Bundled projects */
+		"lib": ["dom", "dom.iterable", "esnext"], // 指定 TypeScript 可以使用的内置库类型定义
+		"noEmit": true, // 禁止 TypeScript 生成编译后的 .js 文件
+		"module": "esnext", // 指定模块代码生成格式为 esnext（最新 ES 模块语法），支持动态 import() 等高级特性，配合打包工具使用
+		"moduleResolution": "bundler", // 使用打包工具（如 Webpack）的模块解析逻辑，而非 TypeScript 默认的 Node.js 解析逻辑
+		// "jsx": "preserve", // "preserve"：保留 JSX 语法不编译（交给 Babel 等工具处理）。
+		"jsx": "react-jsx", // React 17+ 推荐的方式
+		"plugins": [
+			{
+				"name": "next" // 启用 Next.js 提供的 TypeScript 插件，用于增强 Next.js 特定语法的类型检查
+			}
+		],
 
-    /* Path Aliases */
-    "baseUrl": ".", // 设置模块解析的基准目录为项目根目录
-    "paths": {
-      "@/*": ["./src/*"] // 用 @/ 代替 ./src/，例如：'@/components/Button' 代替 './src/components/Button'
-    }
-  },
-  // 需要 TypeScript 处理的文件范围
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "prettier.config.js"
-  ],
-  // 排除的文件范围
-  "exclude": ["node_modules"]
+		/* Path Aliases */
+		"baseUrl": ".", // 设置模块解析的基准目录为项目根目录
+		"paths": {
+			"@/*": ["./src/*"] // 用 @/ 代替 ./src/，例如：'@/components/Button' 代替 './src/components/Button'
+		}
+	},
+	// 需要 TypeScript 处理的文件范围
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts",
+		"**/*.mts",
+		"prettier.config.cjs"
+	],
+	// 排除的文件范围
+	"exclude": ["node_modules"]
 }
