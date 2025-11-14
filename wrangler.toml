@@ -3,7 +3,7 @@ compatibility_date = "2024-11-12"
 pages_build_output_dir = ".vercel/output/static"
 compatibility_flags = [ "nodejs_compat" ]
 
-[vars]
 # 环境变量配置（非敏感信息）
 # 注意：API Key 等敏感信息请通过 `wrangler secret put OPENAI_API_KEY` 设置
+[vars]
 NEXT_PUBLIC_GRAPHQL_ENDPOINT = https://api.yideng.shop/graphql
