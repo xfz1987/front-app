@@ -4,12 +4,12 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Home() {
-  const router = useRouter();
+	const router = useRouter();
 
-  useEffect(() => {
-    // 重定向到 nutrition 页面
-    router.push('/nutrition');
-  }, [router]);
+	useEffect(() => {
+		// 重定向到 home 页面
+		router.push('/home');
+	}, [router]);
 
-  return null;
+	return null;
 }

@@ -12,7 +12,7 @@ import {
 	Divider,
 	Toolbar,
 } from '@mui/material';
-import { Restaurant, Settings } from '@mui/icons-material';
+import { Home, Restaurant, Settings } from '@mui/icons-material';
 import { usePathname, useRouter } from 'next/navigation';
 
 const drawerWidth = 240;
@@ -24,11 +24,11 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-	// {
-	// 	text: 'Home',
-	// 	icon: <Home />,
-	// 	path: '/',
-	// },
+	{
+		text: 'Home',
+		icon: <Home />,
+		path: '/home',
+	},
 	{
 		text: '健康分析',
 		icon: <Restaurant />,

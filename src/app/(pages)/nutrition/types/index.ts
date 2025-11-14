@@ -10,6 +10,15 @@ export interface FormData {
   weight: number;
 }
 
+// GraphQL Response 类型（从后端返回）
+export interface NutritionGraphQLResponse {
+  success: boolean;
+  data?: string; // JSON 字符串
+  error?: string;
+  message?: string;
+}
+
+// 解析后的分析响应类型
 export interface AnalysisResponse {
   success: boolean;
   data: {
