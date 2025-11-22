@@ -1,4 +1,4 @@
-import { Transfer as TransferEvent } from "../generated/Events/Events"
+import { Transfer as TransferEvent } from "../generated/EventTest/EventTest"
 import { Transfer } from "../generated/schema"
 
 export function handleTransfer(event: TransferEvent): void {

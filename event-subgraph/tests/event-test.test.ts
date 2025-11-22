@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { Transfer } from "../generated/schema"
-import { Transfer as TransferEvent } from "../generated/Events/Events"
-import { handleTransfer } from "../src/events"
-import { createTransferEvent } from "./events-utils"
+import { Transfer as TransferEvent } from "../generated/EventTest/EventTest"
+import { handleTransfer } from "../src/event-test"
+import { createTransferEvent } from "./event-test-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/subgraphs/developing/creating/unit-testing-framework/#tests-structure

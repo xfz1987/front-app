@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
-import { Transfer } from "../generated/Events/Events"
+import { Transfer } from "../generated/EventTest/EventTest"
 
 export function createTransferEvent(
   _from: Address,

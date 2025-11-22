@@ -65,6 +65,7 @@ export function useTransfer() {
 			abi: abi,
 			functionName: '_transfer',
 			args: [from, to, amount],
+			gas: BigInt(100000), // 手动设置 gas limit,避免自动估算过高
 		});
 	};
 

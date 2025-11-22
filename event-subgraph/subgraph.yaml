@@ -5,12 +5,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Events
+    name: EventTest
     network: sepolia
     source:
-      address: "0x010F5D68f4F0f008fa405aA009D56d5040915c8c"
-      abi: Events
-      startBlock: 9685367
+      address: "0x11c70333EA588389bef5778Cfd44188C54998268"
+      abi: EventTest
+      startBlock: 9686033
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.9
@@ -18,9 +18,9 @@ dataSources:
       entities:
         - Transfer
       abis:
-        - name: Events
-          file: ./abis/Events.json
+        - name: EventTest
+          file: ./abis/EventTest.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/events.ts
+      file: ./src/event-test.ts
