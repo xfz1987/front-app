@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "Events": {
+      "address": "0x22D29F18EaB5f24f123647488B450c9470F4767b",
+      "startBlock": 9683775
+    }
+  }
+}
