@@ -1,13 +1,18 @@
-import { useReadContract, useWriteContract, useWatchContractEvent } from 'wagmi';
-import { CONTRACT_ADDRESS } from '../config/wagmi';
+import {
+	useReadContract,
+	useWriteContract,
+	useWatchContractEvent,
+	useBalance as useWagmiBalance,
+} from 'wagmi';
+import { CONTRACT_ADDRESS } from '../config';
 import EventsABI from '../abi/Events.json';
 import { useState } from 'react';
 
 // 合约 ABI
 const abi = EventsABI.abi;
 
-// 读取余额
-export function useBalance(address: `0x${string}` | undefined) {
+// 读取合约内余额
+export function useContractBalance(address: `0x${string}` | undefined) {
 	const { data, isError, isLoading, refetch } = useReadContract({
 		address: CONTRACT_ADDRESS,
 		abi: abi,
@@ -26,9 +31,33 @@ export function useBalance(address: `0x${string}` | undefined) {
 	};
 }
 
+// 读取钱包原生 ETH 余额
+export function useBalance(address: `0x${string}` | undefined) {
+	const { data, isError, isLoading, refetch } = useWagmiBalance({
+		address: address,
+		query: {
+			enabled: !!address,
+		},
+	});
+
+	return {
+		balance: data?.value,
+		isError,
+		isLoading,
+		refetch,
+	};
+}
+
 // 转账函数
 export function useTransfer() {
-	const { writeContract, isPending, isSuccess, isError, error, data: hash } = useWriteContract();
+	const {
+		writeContract,
+		isPending,
+		isSuccess,
+		isError,
+		error,
+		data: hash,
+	} = useWriteContract();
 
 	const transfer = (from: `0x${string}`, to: `0x${string}`, amount: bigint) => {
 		writeContract({

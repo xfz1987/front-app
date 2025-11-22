@@ -8,7 +8,7 @@ export default function Home() {
 
 	useEffect(() => {
 		// 重定向到 home 页面
-		router.push('/home');
+		router.push('/eventcontract');
 	}, [router]);
 
 	return null;

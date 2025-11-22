@@ -12,12 +12,12 @@ function EventContractContent() {
 	const { isConnected } = useAccount();
 
 	return (
-		<Container maxWidth="xl" sx={{ py: 4 }}>
+		<Container maxWidth='xl' sx={{ py: 4 }}>
 			{/* 页面标题 */}
-			<Box mb={4} textAlign="center">
+			<Box mb={4} textAlign='center'>
 				<Typography
-					variant="h3"
-					fontWeight="bold"
+					variant='h3'
+					fontWeight='bold'
 					gutterBottom
 					sx={{
 						background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -28,7 +28,7 @@ function EventContractContent() {
 				>
 					Web3 DApp
 				</Typography>
-				<Typography variant="h6" color="text.secondary">
+				<Typography variant='h6' color='text.secondary'>
 					使用 Wagmi + The Graph 构建的去中心化应用
 				</Typography>
 			</Box>
@@ -67,38 +67,38 @@ function EventContractContent() {
 						background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
 					}}
 				>
-					<Typography variant="h5" fontWeight="bold" gutterBottom>
+					<Typography variant='h5' fontWeight='bold' gutterBottom>
 						欢迎来到 Web3 DApp
 					</Typography>
-					<Typography variant="body1" color="text.secondary">
+					<Typography variant='body1' color='text.secondary'>
 						请先连接你的 MetaMask 钱包以开始使用
 					</Typography>
 				</Paper>
 			)}
 
 			{/* 页脚说明 */}
-			<Box mt={6} py={3} borderTop={1} borderColor="divider" textAlign="center">
-				<Typography variant="body2" color="text.secondary" gutterBottom>
+			<Box mt={6} py={3} borderTop={1} borderColor='divider' textAlign='center'>
+				<Typography variant='body2' color='text.secondary' gutterBottom>
 					功能特性
 				</Typography>
-				<Grid container spacing={2} justifyContent="center" mt={1}>
+				<Grid container spacing={2} justifyContent='center' mt={1}>
 					<Grid item>
-						<Typography variant="caption" sx={{ fontWeight: 'bold' }}>
+						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• Wagmi 钱包连接
 						</Typography>
 					</Grid>
 					<Grid item>
-						<Typography variant="caption" sx={{ fontWeight: 'bold' }}>
+						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• 智能合约交互
 						</Typography>
 					</Grid>
 					<Grid item>
-						<Typography variant="caption" sx={{ fontWeight: 'bold' }}>
+						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• 实时事件监听
 						</Typography>
 					</Grid>
 					<Grid item>
-						<Typography variant="caption" sx={{ fontWeight: 'bold' }}>
+						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• The Graph 数据查询
 						</Typography>
 					</Grid>

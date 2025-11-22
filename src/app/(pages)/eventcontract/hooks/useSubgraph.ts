@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { SUBGRAPH_URL } from '../config/wagmi';
+import { SUBGRAPH_URL } from '../config';
 
 // Transfer 事件类型
 export interface TransferEvent {
@@ -57,7 +57,10 @@ const GET_STATS_QUERY = `
 `;
 
 // 通用查询函数
-async function fetchSubgraph<T>(query: string, variables?: any): Promise<T> {
+async function fetchSubgraph<T>(
+	query: string,
+	variables?: unknown
+): Promise<T> {
 	const response = await fetch(SUBGRAPH_URL, {
 		method: 'POST',
 		headers: {
@@ -96,14 +99,20 @@ export function useTransfers(first: number = 10, skip: number = 0) {
 }
 
 // 查询特定地址的转账
-export function useAddressTransfers(address: string | undefined, first: number = 10) {
+export function useAddressTransfers(
+	address: string | undefined,
+	first: number = 10
+) {
 	return useQuery({
 		queryKey: ['addressTransfers', address, first],
 		queryFn: () =>
-			fetchSubgraph<{ transfers: TransferEvent[] }>(GET_ADDRESS_TRANSFERS_QUERY, {
-				address: address?.toLowerCase(),
-				first,
-			}),
+			fetchSubgraph<{ transfers: TransferEvent[] }>(
+				GET_ADDRESS_TRANSFERS_QUERY,
+				{
+					address: address?.toLowerCase(),
+					first,
+				}
+			),
 		enabled: !!address,
 		refetchInterval: 5000,
 	});
@@ -114,7 +123,9 @@ export function useTransferStats() {
 	return useQuery({
 		queryKey: ['transferStats'],
 		queryFn: async () => {
-			const data = await fetchSubgraph<{ transfers: TransferEvent[] }>(GET_STATS_QUERY);
+			const data = await fetchSubgraph<{ transfers: TransferEvent[] }>(
+				GET_STATS_QUERY
+			);
 			return {
 				totalTransfers: data.transfers.length,
 			};

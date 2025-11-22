@@ -1,12 +1,13 @@
 import { http, createConfig } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
-import { injected } from 'wagmi/connectors';
+import { metaMask } from 'wagmi/connectors';
 
 // Wagmi 配置
 export const config = createConfig({
 	chains: [sepolia],
 	connectors: [
-		injected(), // MetaMask 连接器
+		// injected(), // MetaMask 连接器
+		metaMask(),
 	],
 	transports: {
 		[sepolia.id]: http(),
@@ -18,4 +19,4 @@ export const CONTRACT_ADDRESS = process.env
 	.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`;
 
 // 'https://api.studio.thegraph.com/query/<your-subgraph-id>/events/version/latest';
-export const SUBGRAPH_URL = process.env.NEXT_PUBLIC_SUBGRAPH_URL;
+export const SUBGRAPH_URL = process.env.NEXT_PUBLIC_SUBGRAPH_URL || '';

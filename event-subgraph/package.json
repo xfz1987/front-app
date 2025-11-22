@@ -1,13 +1,13 @@
 {
-  "name": "xfztest",
+  "name": "xfztest-1",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ xfztest",
-    "create-local": "graph create --node http://localhost:8020/ xfztest",
-    "remove-local": "graph remove --node http://localhost:8020/ xfztest",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 xfztest",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ xfztest-1",
+    "create-local": "graph create --node http://localhost:8020/ xfztest-1",
+    "remove-local": "graph remove --node http://localhost:8020/ xfztest-1",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 xfztest-1",
     "test": "graph test"
   },
   "dependencies": {

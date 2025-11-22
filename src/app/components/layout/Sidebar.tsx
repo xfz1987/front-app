@@ -34,6 +34,11 @@ const menuItems: MenuItem[] = [
 		icon: <Restaurant />,
 		path: '/nutrition',
 	},
+	{
+		text: 'Event合约',
+		icon: <Restaurant />,
+		path: '/eventcontract',
+	},
 ];
 
 const bottomMenuItems: MenuItem[] = [
