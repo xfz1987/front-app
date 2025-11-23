@@ -1,6 +1,14 @@
 'use client';
 
-import { Container, Box, Typography, Grid, Paper } from '@mui/material';
+import { useState, useEffect } from 'react';
+import {
+	Container,
+	Box,
+	Typography,
+	Grid,
+	Paper,
+	CircularProgress,
+} from '@mui/material';
 import { Web3Provider } from './providers/Web3Provider';
 import { WalletConnect } from './components/WalletConnect';
 import { ContractInteraction } from './components/ContractInteraction';
@@ -10,29 +18,31 @@ import { useAccount } from 'wagmi';
 
 function EventContractContent() {
 	const { isConnected } = useAccount();
+	const [isMounted, setIsMounted] = useState(false);
+
+	// 确保只在客户端渲染
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
+	// 在组件挂载前显示加载状态
+	if (!isMounted) {
+		return (
+			<Container maxWidth='xl' sx={{ py: 4 }}>
+				<Box
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+					minHeight='60vh'
+				>
+					<CircularProgress size={60} />
+				</Box>
+			</Container>
+		);
+	}
 
 	return (
 		<Container maxWidth='xl' sx={{ py: 4 }}>
-			{/* 页面标题 */}
-			<Box mb={4} textAlign='center'>
-				<Typography
-					variant='h3'
-					fontWeight='bold'
-					gutterBottom
-					sx={{
-						background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-						backgroundClip: 'text',
-						WebkitBackgroundClip: 'text',
-						WebkitTextFillColor: 'transparent',
-					}}
-				>
-					Web3 DApp
-				</Typography>
-				<Typography variant='h6' color='text.secondary'>
-					使用 Wagmi + The Graph 构建的去中心化应用
-				</Typography>
-			</Box>
-
 			{/* 钱包连接卡片 */}
 			<Box mb={4}>
 				<WalletConnect />
@@ -43,17 +53,17 @@ function EventContractContent() {
 				<>
 					{/* 第一行：合约交互和事件监听 */}
 					<Grid container spacing={3} mb={3}>
-						<Grid item xs={12} md={6}>
+						<Grid xs={12} md={6}>
 							<ContractInteraction />
 						</Grid>
-						<Grid item xs={12} md={6}>
+						<Grid xs={12} md={6}>
 							<EventListener />
 						</Grid>
 					</Grid>
 
 					{/* 第二行：The Graph 数据展示 */}
 					<Grid container spacing={3}>
-						<Grid item xs={12}>
+						<Grid xs={12}>
 							<SubgraphData />
 						</Grid>
 					</Grid>

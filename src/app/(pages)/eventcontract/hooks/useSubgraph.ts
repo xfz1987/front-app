@@ -4,9 +4,9 @@ import { SUBGRAPH_URL } from '../config';
 // Transfer 事件类型
 export interface TransferEvent {
 	id: string;
-	from: string;
-	to: string;
-	value: string;
+	_from: string;
+	_to: string;
+	_value: string;
 	blockNumber: string;
 	blockTimestamp: string;
 	transactionHash: string;
@@ -17,9 +17,9 @@ const GET_TRANSFERS_QUERY = `
   query GetTransfers($first: Int!, $skip: Int!) {
     transfers(first: $first, skip: $skip, orderBy: blockTimestamp, orderDirection: desc) {
       id
-      from
-      to
-      value
+      _from
+      _to
+      _value
       blockNumber
       blockTimestamp
       transactionHash
@@ -34,12 +34,12 @@ const GET_ADDRESS_TRANSFERS_QUERY = `
       first: $first
       orderBy: blockTimestamp
       orderDirection: desc
-      where: { or: [{ from: $address }, { to: $address }] }
+      where: { or: [{ _from: $address }, { _to: $address }] }
     ) {
       id
-      from
-      to
-      value
+      _from
+      _to
+      _value
       blockNumber
       blockTimestamp
       transactionHash
@@ -61,6 +61,10 @@ async function fetchSubgraph<T>(
 	query: string,
 	variables?: unknown
 ): Promise<T> {
+	// console.log('📊 Subgraph query:', SUBGRAPH_URL);
+	// console.log('📝 Query:', query);
+	// console.log('📋 Variables:', variables);
+
 	const response = await fetch(SUBGRAPH_URL, {
 		method: 'POST',
 		headers: {
@@ -72,13 +76,19 @@ async function fetchSubgraph<T>(
 		}),
 	});
 
+	// console.log('📡 Response status:', response.status);
+
 	if (!response.ok) {
-		throw new Error('Subgraph query failed');
+		const errorText = await response.text();
+		console.error('❌ Subgraph query failed:', errorText);
+		throw new Error(`Subgraph query failed: ${response.status} - ${errorText}`);
 	}
 
 	const json = await response.json();
+	// console.log('✅ Subgraph response:', json);
 
 	if (json.errors) {
+		console.error('❌ GraphQL errors:', json.errors);
 		throw new Error(json.errors[0].message);
 	}
 

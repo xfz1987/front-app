@@ -1,6 +1,7 @@
 'use client';
 
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useState, useEffect } from 'react';
 import {
 	Button,
 	Card,
@@ -8,6 +9,7 @@ import {
 	Typography,
 	Box,
 	Chip,
+	CircularProgress,
 } from '@mui/material';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
@@ -17,10 +19,35 @@ export function WalletConnect() {
 	const { address, isConnected, chain } = useAccount();
 	const { connect, connectors, isPending } = useConnect();
 	const { disconnect } = useDisconnect();
+	const [isMounted, setIsMounted] = useState(false);
+
+	// 确保只在客户端渲染
+	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		setIsMounted(true);
+	}, []);
 
 	const formatAddress = (addr: string) => {
 		return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 	};
+
+	// 在组件挂载前显示加载状态
+	if (!isMounted) {
+		return (
+			<Card elevation={3}>
+				<CardContent>
+					<Box
+						display='flex'
+						justifyContent='center'
+						alignItems='center'
+						py={4}
+					>
+						<CircularProgress />
+					</Box>
+				</CardContent>
+			</Card>
+		);
+	}
 
 	if (isConnected && address) {
 		return (

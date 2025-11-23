@@ -7,3 +7,5 @@ compatibility_flags = [ "nodejs_compat" ]
 # 注意：API Key 等敏感信息请通过 `wrangler secret put OPENAI_API_KEY` 设置
 [vars]
 NEXT_PUBLIC_GRAPHQL_ENDPOINT = "https://api.yideng.shop/graphql"
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x11c70333EA588389bef5778Cfd44188C54998268
+NEXT_PUBLIC_SUBGRAPH_URL=https://api.studio.thegraph.com/query/1715867/event-test/version/latest

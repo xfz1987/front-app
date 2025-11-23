@@ -6,5 +6,7 @@
 
 2. cd 到 生成的目录下
 
-3. graph deploy Subgraph
+3. graph codegen && graph build
+
+4. graph deploy (init时指定的Subgraph slug)
    生成 https://api.studio.thegraph.com/query/{id}/{name}/latest

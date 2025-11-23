@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatEther } from 'viem';
 import {
 	Card,
@@ -31,7 +31,14 @@ export function SubgraphData() {
 	const { address } = useAccount();
 	const [tabValue, setTabValue] = useState(0);
 	const [page, setPage] = useState(0);
+	const [isMounted, setIsMounted] = useState(false);
 	const pageSize = 10;
+
+	// 确保只在客户端渲染
+	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		setIsMounted(true);
+	}, []);
 
 	const {
 		data: allTransfersData,
@@ -60,6 +67,24 @@ export function SubgraphData() {
 	const transfers =
 		tabValue === 0 ? allTransfersData?.transfers : myTransfersData?.transfers;
 	const loading = tabValue === 0 ? isLoading : myLoading;
+
+	// 在组件挂载前显示加载状态
+	if (!isMounted) {
+		return (
+			<Card elevation={3}>
+				<CardContent>
+					<Box
+						display='flex'
+						justifyContent='center'
+						alignItems='center'
+						py={4}
+					>
+						<CircularProgress />
+					</Box>
+				</CardContent>
+			</Card>
+		);
+	}
 
 	return (
 		<Card elevation={3}>
@@ -153,20 +178,20 @@ export function SubgraphData() {
 											</TableCell>
 											<TableCell>
 												<Chip
-													label={formatAddress(transfer.from)}
+													label={formatAddress(transfer._from)}
 													size='small'
 												/>
 											</TableCell>
 											<TableCell>
 												<Chip
-													label={formatAddress(transfer.to)}
+													label={formatAddress(transfer._to)}
 													size='small'
 													color='primary'
 												/>
 											</TableCell>
 											<TableCell align='right'>
 												<Chip
-													label={`${formatEther(BigInt(transfer.value))} ETH`}
+													label={`${BigInt(transfer._value).toString()} Token`}
 													size='small'
 													color='success'
 												/>
