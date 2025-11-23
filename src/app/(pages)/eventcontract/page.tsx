@@ -22,6 +22,7 @@ function EventContractContent() {
 
 	// 确保只在客户端渲染
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setIsMounted(true);
 	}, []);
 
@@ -53,17 +54,17 @@ function EventContractContent() {
 				<>
 					{/* 第一行：合约交互和事件监听 */}
 					<Grid container spacing={3} mb={3}>
-						<Grid xs={12} md={6}>
+						<Grid size={{ xs: 12, md: 6 }}>
 							<ContractInteraction />
 						</Grid>
-						<Grid xs={12} md={6}>
+						<Grid size={{ xs: 12, md: 6 }}>
 							<EventListener />
 						</Grid>
 					</Grid>
 
 					{/* 第二行：The Graph 数据展示 */}
 					<Grid container spacing={3}>
-						<Grid xs={12}>
+						<Grid size={{ xs: 12 }}>
 							<SubgraphData />
 						</Grid>
 					</Grid>
@@ -92,22 +93,22 @@ function EventContractContent() {
 					功能特性
 				</Typography>
 				<Grid container spacing={2} justifyContent='center' mt={1}>
-					<Grid item>
+					<Grid>
 						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• Wagmi 钱包连接
 						</Typography>
 					</Grid>
-					<Grid item>
+					<Grid>
 						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• 智能合约交互
 						</Typography>
 					</Grid>
-					<Grid item>
+					<Grid>
 						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• 实时事件监听
 						</Typography>
 					</Grid>
-					<Grid item>
+					<Grid>
 						<Typography variant='caption' sx={{ fontWeight: 'bold' }}>
 							• The Graph 数据查询
 						</Typography>

@@ -352,7 +352,7 @@ export function ContractInteraction() {
 					{isSuccess && hash && (
 						<Alert severity='success' sx={{ mb: 2 }}>
 							<Typography variant='body2' fontWeight='bold' mb={1}>
-								转账成功！事件应该会在"实时事件监听"中显示
+								转账成功！事件应该会在&quot;实时事件监听&quot;中显示
 							</Typography>
 							<Box display='flex' alignItems='center' gap={1} mb={1}>
 								<Typography variant='caption'>交易哈希:</Typography>
