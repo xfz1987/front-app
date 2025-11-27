@@ -3,6 +3,7 @@
 import { Box, Toolbar } from '@mui/material';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
+import { AlertProvider } from '../Alert/AlertProvider';
 
 interface DashboardLayoutProps {
 	children: React.ReactNode;
@@ -29,7 +30,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 				<Topbar />
 				{/* 主内容区域 */}
 				<Toolbar /> {/* 占位符,避免内容被顶部导航栏遮挡 */}
-				<Box sx={{ p: 3 }}>{children}</Box>
+				<AlertProvider>
+					<Box sx={{ p: 3 }}>{children}</Box>
+				</AlertProvider>
 			</Box>
 		</Box>
 	);

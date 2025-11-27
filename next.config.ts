@@ -6,10 +6,12 @@ const nextConfig: NextConfig = {
 	// crossOrigin: 'anonymous', // 在组件生成的所有<script>标签中，定义如何处理跨域请求, next/script
 	// distDir: 'build',
 	images: {
+		unoptimized: true,
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: '*',
+				pathname: '/**', // 允许加载所有路径
 			},
 		],
 		// 使用云服务提供商来优化图像，而不是使用 Next.js 内置的图像优化 API
